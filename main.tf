@@ -9,17 +9,19 @@ terraform {
   }
 }
 
-
-
 provider "azurerm" {
   features {}
   subscription_id = "10c7afc3-df61-4686-a272-a5aba7014038"
 }
 
-resource "azurerm_container_registry" "docker_registry" {
-    location                      = "westeurope"
-    name                          = "rectassetcheckfcpaula"
-    resource_group_name           = "rg-hanab-assetcheck-fc-tst"
-    sku                           = "Standard"
-    admin_enabled = true
+# module docker_registry {
+#   source = "./docker_registry"
+# }
+
+# module "storage_account" {
+#   source = "./storage_account"
+# }
+
+module "application_insights" {
+  source = "./application_insights"
 }
